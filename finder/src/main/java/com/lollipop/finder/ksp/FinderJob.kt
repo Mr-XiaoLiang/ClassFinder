@@ -74,8 +74,9 @@ class FinderJob(
             packageName,
             className
         )
+        val baseVolunteer = FinderHelper.BASE_VOLUNTEER
         outFile.write("package $packageName \n\n".toByteArray())//写入文件
-        outFile.write("object $className : BaseFinder<${superClass}>(listOf(".toByteArray())
+        outFile.write("object $className : ${baseVolunteer}<${superClass}>(listOf(".toByteArray())
         val comma = ",".toByteArray()
         val clazz = "::class.java".toByteArray()
         for (index in classList.indices) {

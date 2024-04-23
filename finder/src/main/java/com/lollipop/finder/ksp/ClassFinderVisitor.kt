@@ -28,6 +28,7 @@ import com.google.devtools.ksp.symbol.KSTypeReference
 import com.google.devtools.ksp.symbol.KSValueArgument
 import com.google.devtools.ksp.symbol.KSValueParameter
 import com.google.devtools.ksp.symbol.KSVisitor
+import com.lollipop.finder.FinderHelper
 
 class ClassFinderVisitor(private val logger: (String) -> Unit) : KSVisitor<Unit, List<FinderJob>> {
 
@@ -46,7 +47,7 @@ class ClassFinderVisitor(private val logger: (String) -> Unit) : KSVisitor<Unit,
         var superClass = ""
         val annotations = clazz.annotations
         for (a in annotations) {
-            if (a.shortName.asString() == "ClassFinder") {
+            if (a.shortName.asString() == FinderHelper.ROOT_ANNOTATION) {
                 a.arguments.forEach {
                     logger("visitAnnotation arguments:  ${it.name?.getShortName()} = ${it.value}")
                     val argName = it.name?.getShortName() ?: ""

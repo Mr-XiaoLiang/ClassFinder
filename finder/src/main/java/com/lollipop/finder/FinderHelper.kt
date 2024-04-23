@@ -6,6 +6,10 @@ internal object FinderHelper {
 
     const val FINDER_PACKAGE_NAME = "com.lollipop.finder"
 
+    val ROOT_ANNOTATION = Volunteer::class.java.simpleName
+
+    val BASE_VOLUNTEER = ClassVolunteer::class.java.simpleName
+
     fun finderName(clazz: Class<*>): String {
         return finderName(clazz.name)
     }
