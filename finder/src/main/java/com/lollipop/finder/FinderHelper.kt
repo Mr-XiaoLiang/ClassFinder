@@ -17,9 +17,8 @@ internal object FinderHelper {
     fun finderName(path: String): String {
         return getClassName(path, "Finder")
     }
-
     private fun getClassName(path: String, suffix: String): String {
-        val nameList = path.split(".")
+        val nameList = path.split("$", ".")
         if (nameList.size < 2) {
             return path.firstUpCase() + suffix
         }
